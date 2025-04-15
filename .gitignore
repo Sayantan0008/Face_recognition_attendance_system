@@ -1,0 +1,15 @@
+.env
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+attendance.db
+test.db
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.pem
+*.key
+*.crt

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition Attendance System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Face Recognition Attendance System</h1>
+        <p>Register, recognize, and track attendance with facial recognition</p>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="register">Register</button>
+        <button class="tab-btn" data-tab="recognize">Recognize</button>
+        <button class="tab-btn" data-tab="report">Attendance Report</button>
+      </div>
+
+      <!-- Register Tab -->
+      <div id="register" class="tab-content active">
+        <h2>Register New User</h2>
+        <div class="camera-container">
+          <video id="registerVideo" autoplay playsinline></video>
+          <canvas id="registerCanvas"></canvas>
+          <div class="face-overlay" id="registerOverlay"></div>
+        </div>
+        <div class="form-group">
+          <label for="registerName">Full Name</label>
+          <input type="text" id="registerName" placeholder="Enter full name" />
+        </div>
+        <div class="form-group"></div>
+        <div class="form-group">
+          <label for="imageUpload">Upload Image</label>
+          <input type="file" id="imageUpload" accept="image/*" />
+          <p class="upload-note">
+            Upload a photo or use the camera to capture your face
+          </p>
+        </div>
+        <button id="captureBtn">Capture Image</button>
+        <button id="registerBtn" disabled>Register User</button>
+        <div id="registerStatus" class="status-message"></div>
+        <div class="loading" id="registerLoading">
+          <div class="loading-spinner"></div>
+          <p>Processing...</p>
+        </div>
+      </div>
+
+      <!-- Recognize Tab -->
+      <div id="recognize" class="tab-content">
+        <h2>Recognize User</h2>
+        <div class="camera-container">
+          <video id="recognizeVideo" autoplay playsinline></video>
+          <canvas id="recognizeCanvas"></canvas>
+          <div class="face-overlay" id="recognizeOverlay"></div>
+        </div>
+        <button id="recognizeBtn">Recognize Face</button>
+        <div id="recognizeStatus" class="status-message"></div>
+        <div class="loading" id="recognizeLoading">
+          <div class="loading-spinner"></div>
+          <p>Processing...</p>
+        </div>
+      </div>
+
+      <!-- Report Tab -->
+      <div id="report" class="tab-content">
+        <h2>Attendance Report</h2>
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" />
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" />
+        </div>
+        <div class="button-group">
+          <button id="generateReportBtn">Generate Report</button>
+          <button id="downloadReportBtn" class="secondary-btn">
+            Download CSV
+          </button>
+        </div>
+        <div class="loading" id="reportLoading">
+          <div class="loading-spinner"></div>
+          <p>Loading report...</p>
+        </div>
+        <table class="attendance-table" id="attendanceTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Date & Time</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceData">
+            <!-- Attendance data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
